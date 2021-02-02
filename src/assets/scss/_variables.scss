@@ -1,0 +1,45 @@
+// Typography
+$app_font_family: "Roboto", "Open Sans";
+$line-height-base: 1.6;
+
+$title-color: #3f5e5d;
+$subtitle-color: white;
+$subtitle-bg-color: #ACB3B9;
+
+$border-separator-color: 0.05rem solid #b3b3b3;
+$item-border: 1px solid #92baa7;
+
+$font_small_size: 0.6rem;
+$font_size: 0.8rem;
+$font_size_bigger: 1.0rem;
+$font_size_big: 1.2rem;
+
+/*
+$font_small_size: 0.8rem;
+$font_size: 1rem;
+$font_size_bigger: 1.2rem;
+$font_size_big: 1.4rem;
+
+*/
+$link_color: #246647;
+$toggle_color: #3f5e5d;
+$action_color: #3f5e5d;
+$external_color: red;
+
+$navbar_background_color: #dbe7f3;
+$navbar_color: #114a86;
+$navbar_font_size: 0.8rem;
+
+$background_color: #407f7b;// #D1DCEB ; // #EDEDED;
+$gold_color : #ffee2c;
+
+//$admin_background_color: #55ff7f;//#edf2ff;
+$admin_background_color: #edf2ff;
+$frontend_background_color: #edf2ff;
+
+$text-color: #363636;
+$text_color_reversed: white;
+$editable_input_color: $text-color;
+
+
+$debug_mode: false;
