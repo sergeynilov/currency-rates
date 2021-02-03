@@ -1,23 +1,23 @@
 <template>
     <article class="admin_page_container">
         <Form @submit="onSubmit" :validation-schema="formEditValidationRules" class="currencyEdit">
-<!--                              currencyOrderingLabels::{{ currencyOrderingLabels}}-->
+            <!--                              currencyOrderingLabels::{{ currencyOrderingLabels}}-->
             
             <div class="card col-sm-12 col-md-10 p-2 m-0 mx-auto">
                 <!--        formTitle::{{ formTitle}}<br>-->
-<!--                currencyActiveLabels::{{ currencyActiveLabels}}<br>-->
-<!--                currencyIsTopLabels::{{ currencyIsTopLabels}}<br>-->
-<!--                formSelectionOrdering::{{ formSelectionOrdering}}<br>-->
-<!--                formSelectionActive::{{ formSelectionActive}}<br>-->
-<!--                formSelectionIsTop::{{ formSelectionIsTop}}<br>-->
+                <!--                currencyActiveLabels::{{ currencyActiveLabels}}<br>-->
+                <!--                currencyIsTopLabels::{{ currencyIsTopLabels}}<br>-->
+                <!--                formSelectionOrdering::{{ formSelectionOrdering}}<br>-->
+                <!--                formSelectionActive::{{ formSelectionActive}}<br>-->
+                <!--                formSelectionIsTop::{{ formSelectionIsTop}}<br>-->
                 <!--        formCreatedAt::{{ formCreatedAt}}<br>-->
                 <!--        formUpdatedAt::{{ formUpdatedAt}}<br>-->
                 <!--        formatFormUpdatedAt::{{ formatFormUpdatedAt}}<br>-->
                 <!--        -->
                 <!--        currencyId::{{ currencyId}}<br>-->
                 <!--                isInsert::{{ isInsert}}<br>-->
-<!--                        isPageLoading::{{ isPageLoading}}<br>-->
-<!--                isPageUpdating::{{ isPageUpdating}}<br>-->
+                <!--                        isPageLoading::{{ isPageLoading}}<br>-->
+                <!--                isPageUpdating::{{ isPageUpdating}}<br>-->
                 <editor-header :show_loading_image="isPageUpdating || isPageLoading"
                                :header_icon="getHeaderIcon('currency')"
                                :header_title="getHeaderTitle()" :header_class="'card-header'">
@@ -199,20 +199,17 @@
                             </dd>
                         </dl> <!-- <dt class="block_2columns_md m-0"> updated_at FIELD DEFINITION -->
                         
-                        <section class="card-footer block_vert">
-                            <div class="block_vert">
-                                <div class="block_vert_half_top row_content_right_aligned">
-                                    <button type="button"
-                                            class="btn btn-danger btn-sm form_action_btn mr-4 nowrap_block"
-                                            @click.prevent="currencyEditorCancel">
-                                        <i :class="'i_link pt-1 '+getHeaderIcon('cancel')"></i>Cancel
-                                    </button>
-                                    <button type="submit"
-                                            class="btn btn-success btn-sm form_action_btn ml-4 mr-4 a_link nowrap_block">
-                                        <i :class="'i_link pt-1 '+getHeaderIcon('save')"></i>{{submitButtonLabel}}
-                                    </button>
-                                </div>
-                            </div>
+                        <section
+                            class="card-footer row_content_right_aligned reversed_background_color top_split_border p-0 pt-2">
+                            <button type="button"
+                                    class="btn btn-danger btn-sm form_action_btn mr-4 nowrap_block"
+                                    @click.prevent="currencyEditorCancel">
+                                <i :class="'i_link pt-1 '+getHeaderIcon('cancel')"></i>Cancel
+                            </button>
+                            <button type="submit"
+                                    class="btn btn-success btn-sm form_action_btn ml-4 mr-4 a_link nowrap_block">
+                                <i :class="'i_link pt-1 '+getHeaderIcon('save')"></i>{{submitButtonLabel}}
+                            </button>
                         </section>
                     
                     </div>
@@ -320,7 +317,7 @@
 
             const currencyEditOnMounted = async () => {
                 console.log('currencyEditOnMounted::')
-                
+
                 retrieveAppDictionaries('currencyEditor', ['currencyOrderingLabels'])
                 app.$emitter.on('appDictionariesRetrieved', (data) => {
                     // console.log('appDictionariesRetrieved data::')
@@ -391,7 +388,7 @@
 
             function onSubmit() {
                 console.log('++onSubmit::')
-                
+
                 isPageUpdating.value = true
                 let formIsTop = ''
                 currencyIsTopLabels.map((nextCurrencyIsTopLabel) => {
@@ -432,17 +429,17 @@
                     axios.post(requestUrl, currencyData, credentials).then(({data}) => {
                         // console.log('data::')
                         // console.log(data)
-                        
+
                         formSelectionOrdering.value = data.ordering
                         isPageUpdating.value = false
                         showPopupMessage('Currency Editor', 'Currency added successfully !', 'success')
                         isInsert.value = false
                         currencyId.value = data.id
                         formCreatedAt.value = data.created_at
-                        router.push({ path: '/admin/currencies/edit/' + currencyId.value })
+                        router.push({path: '/admin/currencies/edit/' + currencyId.value})
                     }).catch((error) => {
                         console.error(error)
-                        if (error.response.status === 422 ) { // validation errors
+                        if (error.response.status === 422) { // validation errors
                             if (typeof error.response.data.errors === 'object') {
                                 let errorFieldsTextArray = []
                                 let errorsTextArray = []
@@ -453,7 +450,7 @@
                                     errorFieldsTextArray.push(key)
                                     const errorText = error.response.data.errors[key]
                                     let errors1 = Object.values(errorText)
-                                    if ( errors1 ) {
+                                    if (errors1) {
                                         errorsTextArray.push(errors1[0])
                                         errStr += key + ' : ' + errors1[0]
                                     }
@@ -473,11 +470,11 @@
                         showPopupMessage('Currency Editor', 'Currency updated successfully !', 'success')
                         router.push({path: '/admin/currencies'})
                     }).catch((error) => {
-                        if (error.response.status === 422 ) { // validation errors
+                        if (error.response.status === 422) { // validation errors
                             if (typeof error.response.data.errors === 'object') {
                                 let errorFieldsTextArray = []
                                 let errorsTextArray = []
-                                
+
                                 let errorsKeysArr = Object.keys(error.response.data.errors)
                                 let errStr = ''
                                 errorsKeysArr.map((key) => {
@@ -489,7 +486,7 @@
                                     // console.log(typeof errorText)
                                     // console.log(errorText)
                                     let errors1 = Object.values(errorText)
-                                    if ( errors1 ) {
+                                    if (errors1) {
                                         errorsTextArray.push(errors1[0])
                                         errStr += key + ' : ' + errors1[0]
                                     }
@@ -498,10 +495,10 @@
                             }
                             return
                         } // if (error.response.status === 422 ) { // validation errors
-                        
+
                         console.log('error.errorCode:::')
                         console.log(error.errorCode)
-                        
+
                         isPageUpdating.value = false
                         showPopupMessage('Currency Editor', 'Error updating currency !', 'warn')
                     })

@@ -29,9 +29,9 @@
                             <input type="checkbox" v-model="showOnlyTopCurrencies" id="cbx_show_only_top_currencies">
                         </li>
                         <li class="ul_horiz_lis_right_aligned_content">
-                            <label for="cbx_show_only_top_currencies">Show Only Top Currencies<br>
-                                <span class="small_size text-left">
-                                ( You can see all currencies <br>in the system )
+                            <label for="cbx_show_only_top_currencies" class="wrapping_text">Show Only Top Currencies
+                                <span class="small_size text-left " style="margin-top: 2px;">
+                                ( You can see all currencies in the system )
                             </span>
                             </label>
                         </li>
@@ -137,7 +137,7 @@
         formatValue,
         retrieveAppDictionaries
     } from '@/helpers/commonFuncs'
-    import {ref, watch, computed, reactive, toRefs, onMounted} from 'vue'
+    import {ref, watchEffect, computed, reactive, toRefs, onMounted} from 'vue'
     import modal from '../views/Modal.vue'
 
     import mitt from 'mitt'
@@ -172,10 +172,10 @@
             let jsMomentDateFormat = settingsJsMomentDateFormat
             let showCurrencyHistoryModal = ref(false)
 
-            watch(() => {
+            watchEffect(() =>
                 loadTopCurrencies()
-            })
-
+            )
+            
             const topCurrenciesByCategoryPageInit = async () => {
                 retrieveAppDictionaries('top_currencies', ['activeCurrenciesList', 'rateDecimalNumbers'])
                 app.$emitter.on('appDictionariesRetrieved', (data) => {
@@ -219,7 +219,7 @@
 
             function topCurrenciesTitle() {
                 if (isPageLoading.value) return ''
-                return process.env.VUE_APP_SITE_NAME + ' : Shown ' + topCurrencies.value.length + ' ' + pluralize(topCurrencies.value.length, 'currency', 'currencies' + ' from ' + currenciesTotalCount.value + ' ' + pluralize(currenciesTotalCount.value, 'currency', 'currencies'))
+                return ' Shown ' + topCurrencies.value.length + ' ' + pluralize(topCurrencies.value.length, 'currency', 'currencies' + ' from ' + currenciesTotalCount.value + ' ' + pluralize(currenciesTotalCount.value, 'currency', 'currencies'))
             }
 
             function loadTopCurrencies() {

@@ -7,7 +7,7 @@
 
 <script>
     import { getHeaderIcon, pluralize, pluralize3, momentDatetime, getDictionaryLabel } from '@/helpers/commonFuncs'
-    import { ref, watch, computed, onMounted } from 'vue'
+    import { ref, computed, onMounted } from 'vue'
     import {
         settingsJsMomentDatetimeFormat,
         settingCredentialsConfig,
@@ -46,13 +46,6 @@
 
             const adminCategoriesListOnMounted = async () => {
             }
-
-            watch(() => {
-                if (filterName.value) {
-                    // console.log('filterName.value::')
-                    // console.log(filterName.value)
-                }
-            })
 
             onMounted(adminCategoriesListOnMounted)
 

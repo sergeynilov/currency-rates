@@ -15,9 +15,8 @@
         >
         </ListingHeader>
         
-        <div class="admin_data_block mb-2">
-            <div class="table-responsive table-wrapper-for-data-listing "
-                 v-show="laravelLoggerActivities.length || isPageLoading">
+        <div class="admin_data_block mb-2" v-show="laravelLoggerActivities.length || isPageLoading">
+            <div class="table-responsive table-wrapper-for-data-listing ">
                 <table class="table table-striped table-data-listing">
                     
                     <thead>
@@ -81,7 +80,7 @@
         getDictionaryLabel,
         retrieveAppDictionaries
     } from '@/helpers/commonFuncs'
-    import {ref, watch, computed, onMounted} from 'vue'
+    import {ref, computed, onMounted} from 'vue'
     import mitt from 'mitt'
     import {
         settingsJsMomentDatetimeFormat,
@@ -134,7 +133,7 @@
                 retrieveAppDictionaries('laravelLoggerActivity', ['backendItemsPerPage'])
                 app.$emitter.on('appDictionariesRetrieved', (data) => {
                     if (data.requestKey === 'laravelLoggerActivity') {
-                        laravelLoggerActivitiesPerPage.value = 2 // data.backendItemsPerPage
+                        laravelLoggerActivitiesPerPage.value = data.backendItemsPerPage
                         loadLaravelLoggerActivities()
                     }
                 })
@@ -198,6 +197,7 @@
                 laravelLoggerActivities,
                 laravelLoggerActivitiesTotalCount,
                 currentLoggedUserToken,
+                removeLaravelLoggerActivity,
 
                 // Settings vars
                 settingsJsMomentDatetimeFormat,

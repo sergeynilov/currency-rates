@@ -13,7 +13,7 @@
       <div v-if="showLoadingImage" class="loading"></div>
       <div class="row_content">
         <h3 class="flex-nowrap row_content_left_aligned" style="display: flex; flex: 1;">
-          <i :class="headerIcon+' m-0 p-0 '" :title="headerTitle" v-if="headerIcon"></i>&nbsp;
+          <i :class="headerIcon+' m-0 p-0 '" :title="headerTitle" v-if="headerIcon" style="margin-top: 2px !important;"></i>&nbsp;
           <span v-html="( !isEmpty(rowsCount) ? rowsCount +' ' : '' ) + itemTitle" v-if="!customTitle && itemTitle && !showLoadingImage"></span>
           <span v-html="customTitle" v-if="customTitle"></span>
         </h3>

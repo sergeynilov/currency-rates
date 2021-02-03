@@ -1,15 +1,17 @@
 <template>
-    <div id="app_wrapper">
+<!--    <main id="app_wrapper">-->
         <header class="mb-3">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">
-                    <i class="test-device p-0" v-if="appVersion == 'D'">
-            <span class="ml-5 hidden_info">
-             {{ appVersion }}
-            </span>
+                    <i class="test-device p-0" v-if="demoVersion">
+                        <span class="ml-5 hidden_info"></span>
                     </i>
-                    Navbar
                 </a>
+    
+                <router-link to="/" class="nav-link a_link_top_menu_home">
+                    <img :src="logoImg" :title="siteName + ' : Home'" :alt="siteName + ' : Home'" class="mr-2 logo_image">
+                </router-link>
+    
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,15 +20,6 @@
                 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-<!--                        <li class="nav-item active">-->
-<!--                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>-->
-<!--                        </li>-->
-                        <li class="nav-item">
-                            <router-link to="/" class="nav-link a_link_top_menu_home">
-                                <img :src="logoImg" :title="siteName + ' : Home'" :alt="siteName + ' : Home'" class="mr-2 logo_image">
-                            </router-link>
-                        </li>
-
                         <li class="nav-item" v-show="isLoggedIn">
                             <router-link :to="{ name: 'adminImportLoggingPageListing' }" class="nav-link a_link_top_menu_forums">Import logs
                             </router-link>
@@ -56,15 +49,19 @@
             </nav>
         </header>
 
-        <h1 class="reversed_text_color">{{ siteName }}</h1>
-        <h2 class="reversed_text_color">{{ siteHeading }}</h2>
-        <router-view>
-        </router-view>
-        <footer class="flexbox-item footer  ml-3 mr-3">
+        <main class="container-fluid flex-fill" id="app_wrapper">
+            <h1 class="reversed_text_color">{{ siteName }}</h1>
+            <h2 class="reversed_text_color">{{ siteHeading }}</h2>
+    
+            <router-view>
+            </router-view>
+        </main>
+    
+        <footer>
             <p class="m-2">{{copyrightText}}</p>
         </footer>
     
-    </div>
+<!--    </div>-->
 
 </template>
 
@@ -97,7 +94,7 @@
             let copyrightText = ref('')
             let siteHeading = ref('')
             let siteName = ref('')
-            const appVersion = process.env.VUE_APP_VERSION
+            const demoVersion = process.env.VUE_APP_DEMO_VERSION === 'true'
             const logoImg = settingsLogoImg
 
             const isLoggedIn = computed(() => {
@@ -193,7 +190,7 @@
             return {
                 // App Common vars
                 logoImg,
-                appVersion,
+                demoVersion,
                 copyrightText,
                 siteHeading,
                 siteName,

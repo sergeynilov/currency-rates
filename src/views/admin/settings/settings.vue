@@ -10,29 +10,29 @@
                 
                 <div class="admin_data_block" v-show="!isPageLoading">
                     <div class="card-body card-block" v-show="!isPageLoading">
-    
-<!--
-                        <dl class="block_2columns_md m-3"> &lt;!&ndash; items_per_page FIELD DEFINITION &ndash;&gt;
-                            <dt class="horiz_divider_left_13">
-                                <label class="col-form-label" for="items_per_page">
-                                    Items per page<span class="required" aria-required="true"> * </span>
-                                </label>
-                            </dt>
-                            <dd class="horiz_divider_right_23">
-                                <Field
-                                    id="items_per_page"
-                                    name="items_per_page"
-                                    type="input"
-                                    v-model="formItemsPerPage"
-                                    class="form-control text-right editable_field"
-                                    placeholder="Integer value"
-                                    autocomplete=off
-                                />
-                                <ErrorMessage name="items_per_page" as="p" class="validation_error"/>
-                            </dd>
-                        </dl> &lt;!&ndash; <dt class="block_2columns_md m-0"> items_per_page FIELD DEFINITION &ndash;&gt;
--->
-    
+                        
+                        <!--
+                                                <dl class="block_2columns_md m-3"> &lt;!&ndash; items_per_page FIELD DEFINITION &ndash;&gt;
+                                                    <dt class="horiz_divider_left_13">
+                                                        <label class="col-form-label" for="items_per_page">
+                                                            Items per page<span class="required" aria-required="true"> * </span>
+                                                        </label>
+                                                    </dt>
+                                                    <dd class="horiz_divider_right_23">
+                                                        <Field
+                                                            id="items_per_page"
+                                                            name="items_per_page"
+                                                            type="input"
+                                                            v-model="formItemsPerPage"
+                                                            class="form-control text-right editable_field"
+                                                            placeholder="Integer value"
+                                                            autocomplete=off
+                                                        />
+                                                        <ErrorMessage name="items_per_page" as="p" class="validation_error"/>
+                                                    </dd>
+                                                </dl> &lt;!&ndash; <dt class="block_2columns_md m-0"> items_per_page FIELD DEFINITION &ndash;&gt;
+                        -->
+                        
                         <dl class="block_2columns_md m-3"> <!-- backend_items_per_page FIELD DEFINITION -->
                             <dt class="horiz_divider_left_13">
                                 <label class="col-form-label" for="backend_items_per_page">
@@ -52,7 +52,7 @@
                                 <ErrorMessage name="backend_items_per_page" as="p" class="validation_error"/>
                             </dd>
                         </dl> <!-- <dt class="block_2columns_md m-0"> backend_items_per_page FIELD DEFINITION -->
-    
+                        
                         <dl class="block_2columns_md m-3"> <!-- rate_decimal_numbers FIELD DEFINITION -->
                             <dt class="horiz_divider_left_13">
                                 <label class="col-form-label" for="rate_decimal_numbers">
@@ -72,7 +72,7 @@
                                 <ErrorMessage name="rate_decimal_numbers" as="p" class="validation_error"/>
                             </dd>
                         </dl> <!-- <dt class="block_2columns_md m-0"> rate_decimal_numbers FIELD DEFINITION -->
-    
+                        
                         <dl class="block_2columns_md m-3"> <!-- base_currency FIELD DEFINITION -->
                             <dt class="horiz_divider_left_13">
                                 <label class="col-form-label" for="base_currency">
@@ -86,7 +86,8 @@
                                     class="form-control editable_field"
                                     v-model="formSelectionBaseCurrency">
                                     <option value="" disabled selected>- Select base currency -</option>
-                                    <option v-for="(baseCurrencyLabel) in baseCurrencyList" :key="baseCurrencyLabel.code">
+                                    <option v-for="(baseCurrencyLabel) in baseCurrencyList"
+                                            :key="baseCurrencyLabel.code">
                                         {{baseCurrencyLabel.label}}
                                     </option>
                                 </Field>
@@ -99,7 +100,8 @@
                                 <li class="ul_horiz_lis_left_aligned_half">
                                     <p class="alert alert-info m-1 p-1 text-left" role="alert"
                                        v-show="formSelectionBaseCurrency && !isPageLoading">
-                                        If you change base currency, you need <br>to clear Rates History to avoid <br>confusing with different base currency.
+                                        If you change base currency, you need <br>to clear Rates History to avoid <br>confusing
+                                        with different base currency.
                                     </p>
                                 </li>
                                 <li class="ul_horiz_lis_right_aligned_half">
@@ -119,27 +121,25 @@
                                     </p>
                                 </li>
                                 <li class="ul_horiz_lis_right_aligned_half">
-                                    <button type="button" class="btn btn-outline-primary btn-lg" @click.prevent="runCurrencyRatesImportManually()">
+                                    <button type="button" class="btn btn-outline-primary btn-lg"
+                                            @click.prevent="runCurrencyRatesImportManually()">
                                         <i :class="'i_link pt-1 '+getHeaderIcon('run')"></i>Run
                                     </button>
                                 </li>
                             </ul>
                         </div>
                         
-                        <section class="card-footer block_vert">
-                            <div class="block_vert">
-                                <div class="block_vert_half_top row_content_right_aligned">
-                                    <button type="button"
-                                            class="btn btn-danger btn-sm form_action_btn mr-4 nowrap_block"
-                                            @click.prevent="settingsEditorCancel">
-                                        <i :class="'i_link pt-1 '+getHeaderIcon('cancel')"></i>Cancel
-                                    </button>
-                                    <button type="submit"
-                                            class="btn btn-success btn-sm form_action_btn ml-4 mr-4 a_link nowrap_block">
-                                        <i :class="'i_link pt-1 '+getHeaderIcon('save')"></i>{{submitButtonLabel}}
-                                    </button>
-                                </div>
-                            </div>
+                        <section
+                            class="card-footer row_content_right_aligned reversed_background_color top_split_border p-0 pt-2">
+                            <button type="button"
+                                    class="btn btn-danger btn-sm form_action_btn mr-4 nowrap_block"
+                                    @click.prevent="settingsEditorCancel">
+                                <i :class="'i_link pt-1 '+getHeaderIcon('cancel')"></i>Cancel
+                            </button>
+                            <button type="submit"
+                                    class="btn btn-success btn-sm form_action_btn ml-4 mr-4 a_link nowrap_block">
+                                <i :class="'i_link pt-1 '+getHeaderIcon('save')"></i>{{submitButtonLabel}}
+                            </button>
                         </section>
                     
                     </div>
@@ -179,6 +179,7 @@
     import mitt from 'mitt'
 
     const emitter = mitt()
+    const demoVersion = process.env.VUE_APP_DEMO_VERSION === 'true'
 
     export default {
         name: 'settingsEditPage',
@@ -224,8 +225,8 @@
             const settingsEditOnMounted = async () => {
                 retrieveAppDictionaries('settingsEditor', ['baseCurrencyList'])
                 app.$emitter.on('appDictionariesRetrieved', (data) => {
-                    console.log('appDictionariesRetrieved data::')
-                    console.log(data)
+                    // console.log('appDictionariesRetrieved data::')
+                    // console.log(data)
                     if (data.requestKey === 'settingsEditor') {
                         baseCurrencyList.value = data.baseCurrencyList
                         loadSettings()
@@ -237,11 +238,10 @@
                 isPageLoading.value = true
                 let credentials = getClone(credentialsConfig)
                 credentials.headers.Authorization = 'Bearer ' + currentLoggedUserToken.value
-                // credentialsConfig.headers.Authorization = 'Bearer ' + currentLoggedUserToken.value
                 axios.get(apiUrl + '/admin/get-settings', credentials)
                     .then(({data}) => {
-                        console.log('loadSettings data::')
-                        console.log(data)
+                        // console.log('loadSettings data::')
+                        // console.log(data)
 
                         // formItemsPerPage.value = data.items_per_page
                         formBackendItemsPerPage.value = data.backend_items_per_page
@@ -264,6 +264,10 @@
 
             function clearRatesHistory() {
                 if (!confirm('Do you want to clear all Currency Rates History ?')) return;
+                if (demoVersion) {
+                    alert('In demo version this function is disabled !')
+                    return
+                }
                 isPageUpdating.value = true
                 let credentials = getClone(credentialsConfig)
                 credentials.headers.Authorization = 'Bearer ' + currentLoggedUserToken.value
@@ -323,15 +327,15 @@
                 let requestUrl = apiUrl + '/admin/update-settings'
                 let credentials = getClone(credentialsConfig)
                 credentials.headers.Authorization = 'Bearer ' + currentLoggedUserToken.value
-                    axios.put(requestUrl, settingsData, credentials).then(({data}) => {
-                        isPageUpdating.value = false
-                        showPopupMessage('Settings Editor', 'Settings updated successfully !', 'success')
-                        // router.push({path: '/admin/settings'})
-                    }).catch((error) => {
-                        console.error(error)
-                        isPageUpdating.value = false
-                        showPopupMessage('Settings Editor', 'Error updating settings !', 'warn')
-                    })
+                axios.put(requestUrl, settingsData, credentials).then(({data}) => {
+                    isPageUpdating.value = false
+                    showPopupMessage('Settings Editor', 'Settings updated successfully !', 'success')
+                    // router.push({path: '/admin/settings'})
+                }).catch((error) => {
+                    console.error(error)
+                    isPageUpdating.value = false
+                    showPopupMessage('Settings Editor', 'Error updating settings !', 'warn')
+                })
             }
 
             function settingsEditorCancel() {
@@ -349,6 +353,7 @@
                 // Settings Form state
                 isPageUpdating,
                 isPageLoading,
+                demoVersion,
 
                 // settings Form fields
                 formItemsPerPage,

@@ -626,6 +626,12 @@ i {
 
 ///  COMMON FLEX ELEMENTS BLOCK START
 
+.wrapping_text {
+  //background-color: yellow;
+  display: flex;
+  flex-wrap: wrap;
+  white-space: pre-wrap;
+}
 .nowrap_block {
   display: flex;
   flex-wrap: nowrap;
@@ -1057,7 +1063,12 @@ a {
 }
 
 .reversed_text_color {
-  color: $text_color_reversed;
+  color: $text_color_reversed !important;
+  //background-color: #EDF2FF;
+}
+.reversed_background_color {
+  //color: $text_color_reversed !important;
+  background-color: #EDF2FF !important;
 }
 .a_link_reversed {
   cursor: pointer;
@@ -1415,6 +1426,10 @@ p {
     min-width: 48px;
     height: 32px;
   }
+  .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
 } /* Extra large ≥ 1200px */
 
 @media only screen and (min-width: 992px) and (max-width: 1280px) { /* lg */
@@ -1436,6 +1451,10 @@ p {
     margin: 1px;
     min-width: 32px;
     height: 32px;
+  }
+  .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+    padding-right: 8px;
+    padding-left: 8px;
   }
 }  /* lg */
 
@@ -1463,6 +1482,11 @@ p {
     min-width: 32px;
     height: 32px;
   }
+  .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+
 }  /* Ipad Pro md */
 
 /* Small ≥ 576px Nexus7  - sm*/
@@ -1498,6 +1522,10 @@ p {
     margin: 1px;
     min-width: 64px;
     height: 32px;
+  }
+  .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+    padding-right: 4px;
+    padding-left: 4px;
   }
 }
 
@@ -1544,6 +1572,11 @@ p {
     min-width: 64px;
     height: 32px;
   }
+
+  .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+    padding-right: 2px;
+    padding-left: 2px;
+  }
 } /* xs */
 
 
@@ -1577,6 +1610,7 @@ p {
 }
 
 .card-footer {
+  background-color: $background_color;
   //color: $text-color;
   //background-color: $background_color;
 }

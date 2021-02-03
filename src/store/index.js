@@ -21,8 +21,8 @@ export default createStore({
     },
 
     auth_success(state, data) {
-      console.log('auth_success data::')
-      console.log(data)
+      // console.log('auth_success data::')
+      // console.log(data)
 
       state.status = 'success'
       state.token = data.token
@@ -62,6 +62,7 @@ export default createStore({
       return new Promise((resolve, reject) => {
         commit('auth_request')
         let apiUrl = process.env.VUE_APP_API_URL
+/*
         console.log('+login userCredentials::')
         console.log(userCredentials)
 
@@ -70,6 +71,7 @@ export default createStore({
 
         console.log('+login apiUrl::')
         console.log(apiUrl)
+*/
 
         axios.post(apiUrl + '/login', userCredentials, settingCredentialsConfig)
           .then((response) => {

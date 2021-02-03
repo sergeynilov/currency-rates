@@ -1,16 +1,5 @@
 <template>
     <article class="admin_page_container">
-    
-<!--        currencyActiveLabels::{{ currencyActiveLabels}}<br>-->
-<!--        currencyIsTopLabels::{{ currencyIsTopLabels}}-->
-        <!--        currentLoggedUserToken::{{ currentLoggedUserToken}}<br>-->
-        <!--        currenciesPerPage::{{ currenciesPerPage}}<br>-->
-        <!--    currenciesTotalCount::{{ currenciesTotalCount}}<br>-->
-        <!--        currentPage::{{ currentPage}}<br>-->
-        <!--    currenciesTotalCount::{{ currenciesTotalCount}}<br>-->
-        <!--        currencies::{{ currencies}}<br>-->
-            isPageLoading::{{ isPageLoading}}<br>
-        <!--    currencies.length::{{ currencies.length}}<br>-->
         
         <ListingHeader :showLoadingImage=isPageLoading
                        :parentComponentKey="'currency'"
@@ -96,8 +85,8 @@
             </fieldset>
         </div> <!-- <div class="admin_data_block mb-3"> -->
         
-        <div class="admin_data_block mb-2">
-            <div class="table-responsive table-wrapper-for-data-listing " v-show="currencies.length && !isPageLoading">
+        <div class="admin_data_block mb-2" v-show="currencies.length && !isPageLoading">
+            <div class="table-responsive table-wrapper-for-data-listing " >
                 <table class="table table-striped table-data-listing">
                     
                     <thead>
@@ -115,8 +104,7 @@
                     <tbody>
                     <tr v-for="(nextCurrency,index) in currencies" :key="nextCurrency.id">
                         <td class="text-right">
-                            <router-link :to="{name: 'adminCurrencyEditor', params: {id: nextCurrency.id}}"
-                                         :class="'p-1 a_edit_item_'+nextCurrency.id">
+                            <router-link :to="{name: 'adminCurrencyEditor', params: {id: nextCurrency.id}}" :class="'p-1 a_edit_item_'+nextCurrency.id">
                                 {{ nextCurrency.id }}
                             </router-link>
                         </td>
@@ -191,7 +179,7 @@
         getDictionaryLabel,
         retrieveAppDictionaries
     } from '@/helpers/commonFuncs'
-    import {ref, watch, computed, onMounted} from 'vue'
+    import {ref, computed, onMounted} from 'vue'
     import mitt from 'mitt'
     import {
         settingsJsMomentDatetimeFormat,
@@ -236,15 +224,6 @@
                     return store.getters.token
                 }
             )
-
-            /*
-                        watch(() => {
-                            if (filterName.value) {
-                                // console.log('filterName.value::')
-                                // console.log(filterName.value)
-                            }
-                        })
-            */
 
             const admincurrenciesListOnMounted = async () => {
                 app.$emitter.on('listingHeaderRightButtonClickedEvent', params => {

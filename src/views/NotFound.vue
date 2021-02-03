@@ -10,7 +10,7 @@
                 The requested "{{ invalidUrl }}" page not found.
             </h4>
             
-            <h5 class="card-footer p-2">
+            <h5 class="card-footer  top_split_border p-0 pt-2">
                 <router-link :to="{ name: 'home' }" class="a_link">Home</router-link>
             </h5>
         </div> <!-- <div class="frontend_data_block mb-3"> -->

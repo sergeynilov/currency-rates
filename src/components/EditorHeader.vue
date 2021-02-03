@@ -6,7 +6,7 @@
       <div style="display:flex; flex : 1 0 310px; align-self: center;" class="p-0"
            v-show="!show_loading_image">
         <h3 style="display: flex; flex-wrap: nowrap;" :class="header_class+' row_content_left_aligned'">
-          <i v-show="header_icon" :class="header_icon+' m-0 mr-1 ml-2 p-0'"></i>
+          <i v-show="header_icon" :class="header_icon+' m-0 mr-1 ml-2 p-0'" style="margin-top: 2px !important;"></i>
           <span v-html="header_title"></span>
         </h3>
       </div>

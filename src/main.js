@@ -27,9 +27,9 @@ app.config.globalProperties.$router = router
 
 const token = localStorage.getItem('token')
 
-if (token) {
-    // router.defaults.headers.common['Authorization'] = token
-}
+// if (token) {
+//     router.defaults.headers.common['Authorization'] = token
+// }
 
 // app.use(axios)
 // app.config.globalProperties.$axios = axios
